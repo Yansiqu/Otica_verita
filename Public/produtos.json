@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "nome": "Óculos Modelo 1",
+        "descricao": "Descrição do Óculos Modelo 1",
+        "preco": 99.99,
+        "imagem": "images/oculos1.jpg"
+    },
+    {
+        "id": 2,
+        "nome": "Óculos Modelo 2",
+        "descricao": "Descrição do Óculos Modelo 2",
+        "preco": 129.99,
+        "imagem": "images/oculos2.jpg"
+    }
+    
+]

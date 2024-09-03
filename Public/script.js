@@ -1,37 +1,29 @@
+const produtosDestaque = [
+    { id: 1, nome: 'Óculos Modelo 1', preco: 'R$ 199,99', imagem: 'oculos1.jpg' },
+    { id: 2, nome: 'Óculos Modelo 2', preco: 'R$ 249,99', imagem: 'oculos2.jpg' },
 
-async function carregarProdutos() {
-    try {
-        const response = await fetch('produtos.json'); 
-        const produtos = await response.json(); 
-        exibirProdutos(produtos); 
-    } catch (error) {
-        console.error('Erro ao carregar os produtos:', error); 
-    }
-}
+];
 
-
-function exibirProdutos(produtos) {
-    const container = document.getElementById('produtos-container');
-
-    produtos.forEach(produto => {
-        const produtoItem = document.createElement('div');
-        produtoItem.className = 'produto-item';
-        produtoItem.innerHTML = `
-            <img src="${produto.imagem}" alt="${produto.nome}">
+function renderizarProdutosDestaque() {
+    const container = document.querySelector('.products');
+    produtosDestaque.forEach(produto => {
+        const produtoElement = document.createElement('div');
+        produtoElement.classList.add('product');
+        produtoElement.innerHTML = `
+            <img src="images/${produto.imagem}" alt="${produto.nome}">
             <h3>${produto.nome}</h3>
-            <p>R$ ${produto.preco}</p>
-            <button onclick="comprarProduto('${encodeURIComponent(produto.nome)}')">Comprar</button>
+            <p>${produto.preco}</p>
+            <button onclick="redirecionarParaWhatsApp('${produto.nome}')">Comprar</button>
         `;
-        container.appendChild(produtoItem);
+        container.appendChild(produtoElement);
     });
 }
 
-function comprarProduto(nomeProduto) {
-    const telefone = '6235844268'; 
-    const mensagem = `Olá, estou interessado no produto: ${decodeURIComponent(nomeProduto)}`;
-    const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
-    window.location.href = url;
+function redirecionarParaWhatsApp(produtoNome) {
+    const numeroTelefone = '+556235844268'; // Número do WhatsApp no formato internacional
+    const mensagem = `Olá, gostaria de mais informações sobre o produto: ${produtoNome}`;
+    const urlWhatsApp = `https://wa.me/${numeroTelefone}?text=${encodeURIComponent(mensagem)}`;
+    window.location.href = urlWhatsApp;
 }
 
-
-window.onload = carregarProdutos;
+document.addEventListener('DOMContentLoaded', renderizarProdutosDestaque);
