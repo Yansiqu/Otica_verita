@@ -20,7 +20,7 @@ function renderizarProdutosDestaque() {
 }
 
 function redirecionarParaWhatsApp(produtoNome) {
-    const numeroTelefone = '+556235844268'; // Número do WhatsApp no formato internacional
+    const numeroTelefone = '+556235844268'; 
     const mensagem = `Olá, gostaria de mais informações sobre o produto: ${produtoNome}`;
     const urlWhatsApp = `https://wa.me/${numeroTelefone}?text=${encodeURIComponent(mensagem)}`;
     window.location.href = urlWhatsApp;
